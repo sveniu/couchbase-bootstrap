@@ -68,6 +68,14 @@ docs = ["furo (>=2022.9.29)", "proselint (>=0.13)", "sphinx (>=5.3)", "sphinx-au
 test = ["appdirs (==1.4.4)", "pytest (>=7.2)", "pytest-cov (>=4)", "pytest-mock (>=3.10)"]
 
 [[package]]
+name = "python-json-logger"
+version = "2.0.4"
+description = "A python library adding a json log formatter"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
 name = "ruff"
 version = "0.0.122"
 description = "An extremely fast Python linter, written in Rust."
@@ -94,7 +102,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "2e4e6fcb3b82a12ef763aa53d8a9eaf4c3da5f18aa20adac912c2b695914ffb1"
+content-hash = "b3720944cb2468896c39ad8f2b8e65c966c88afe0fc734bfc19bb15ddedeee1c"
 
 [metadata.files]
 black = [
@@ -139,6 +147,10 @@ pathspec = [
 platformdirs = [
     {file = "platformdirs-2.5.4-py3-none-any.whl", hash = "sha256:af0276409f9a02373d540bf8480021a048711d572745aef4b7842dad245eba10"},
     {file = "platformdirs-2.5.4.tar.gz", hash = "sha256:1006647646d80f16130f052404c6b901e80ee4ed6bef6792e1f238a8969106f7"},
+]
+python-json-logger = [
+    {file = "python-json-logger-2.0.4.tar.gz", hash = "sha256:764d762175f99fcc4630bd4853b09632acb60a6224acb27ce08cd70f0b1b81bd"},
+    {file = "python_json_logger-2.0.4-py3-none-any.whl", hash = "sha256:3b03487b14eb9e4f77e4fc2a023358b5394b82fd89cecf5586259baed57d8c6f"},
 ]
 ruff = [
     {file = "ruff-0.0.122-py3-none-macosx_10_7_x86_64.whl", hash = "sha256:5b54aba68b9190c7dfb855ce54d18d82411bd471bb7dcbb6534cf1d7cb813bf7"},

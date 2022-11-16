@@ -8,7 +8,10 @@ packages = [{include = "couchbase_bootstrap"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+python-json-logger = "^2.0.4"
 
+[tool.poetry.scripts]
+couchbase-bootstrap = "couchbase_bootstrap.cli:cli"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.0.122"
