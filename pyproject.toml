@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "couchbase-boostrap"
+version = "0.1.0"
+description = ""
+authors = ["Sven Ulland <sven.ulland@gmail.com>"]
+readme = "README.md"
+packages = [{include = "couchbase_bootstrap"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0.122"
+black = "^22.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
