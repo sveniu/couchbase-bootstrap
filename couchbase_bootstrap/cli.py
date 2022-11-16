@@ -2,12 +2,18 @@ import logging
 import sys
 import traceback
 
+from .config import get_config
 from .log import CustomJsonFormatter
 
 logger = logging.getLogger()
 
 
 def main():
+    config = get_config()
+
+    # Update log level from config.
+    logger.setLevel(config.get("log_level", logging.INFO))
+
     logger.info("Hello, World!")
 
 

@@ -1,0 +1,3 @@
+---
+# Global log level (default: INFO)
+log_level: DEBUG

@@ -9,6 +9,7 @@ packages = [{include = "couchbase_bootstrap"}]
 [tool.poetry.dependencies]
 python = "^3.8"
 python-json-logger = "^2.0.4"
+PyYAML = "^6.0"
 
 [tool.poetry.scripts]
 couchbase-bootstrap = "couchbase_bootstrap.cli:cli"
