@@ -88,12 +88,12 @@ def test_integration(docker_inspect):
 
             time.sleep(0.5)
 
-    config_a = config.get_config("tests/config_a.yml")
-    config_b = config.get_config("tests/config_b.yml")
+    config_controller = config.get_config("tests/config_controller.yml")
+    config_member = config.get_config("tests/config_member.yml")
 
     # Use internal Docker IP for the controller node.
-    config_b["cluster_controller_address"] = node_a["internal_ip"]
-    config_b["cluster_controller_port"] = f"{COUCHBASE_PORT_REST}"
+    config_member["cluster_controller_address"] = node_a["internal_ip"]
+    config_member["cluster_controller_port"] = f"{COUCHBASE_PORT_REST}"
 
-    mnode.bootstrap_node(config_a)
-    mnode.bootstrap_node(config_b)
+    mnode.bootstrap_node(config_controller)
+    mnode.bootstrap_node(config_member)
