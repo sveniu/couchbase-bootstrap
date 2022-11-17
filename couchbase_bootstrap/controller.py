@@ -1,5 +1,7 @@
 import logging
 
+from .utils import *
+
 logger = logging.getLogger(__name__)
 
 
@@ -8,7 +10,10 @@ def bootstrap_controller(node, cfg):
     node.enable_services()
 
     # Set memory quotas per service.
-    node.set_memory_quotas(cfg["memory_quotas"])
+    node.set_memory_quotas(
+        cfg["memory_quotas"],
+        total_memory_mb=meminfo()["MemTotal"] / 1024**3,
+    )
 
     # Set authentication, and thus transition this node to become the cluster
     # controller.
