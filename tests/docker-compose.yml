@@ -5,6 +5,7 @@ services:
     container_name: "couchbase_node_a"
     ports:
       - "18091:8091"
+      - "18093:8093" # Query port, for executing cbq scripts.
 
   couchbase2:
     image: "couchbase:enterprise-6.6.5"

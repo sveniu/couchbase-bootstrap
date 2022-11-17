@@ -1,3 +1,6 @@
+import subprocess
+
+
 def meminfo():
     """Return /proc/meminfo as a dict, with byte units"""
     info = {}
@@ -20,3 +23,19 @@ def meminfo():
             info[key] = num
 
     return info
+
+
+def exec_cbq_script(engine, username, password, path):
+    args = [
+        "cbq",
+        "-e",
+        engine,
+        "-u",
+        username,
+        "-p",
+        password,
+        "-f",
+        path,
+    ]
+
+    return subprocess.check_output(args)

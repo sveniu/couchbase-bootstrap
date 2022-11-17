@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 
 from .utils import *
 
@@ -33,3 +34,18 @@ def bootstrap_controller(node, cfg):
     for user in cfg.get("users", []):
         logger.info("creating user", extra={"config": user})
         node.create_user(user["username"], user["config"])
+
+    # Run cbq scripts.
+    for entry in cfg.get("cbq_scripts", []):
+        dir = Path(entry["directory"])
+        for fn in dir.iterdir():
+            if not fn.is_file():
+                continue
+
+            # Execute the script.
+            exec_cbq_script(
+                entry["engine"],
+                entry["username"],
+                entry["password"],
+                fn,
+            )

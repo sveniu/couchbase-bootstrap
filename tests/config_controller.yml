@@ -38,17 +38,13 @@ index_settings:
 
 # Create buckets.
 buckets:
-  - name: bla
+  - name: mybucket
     ramQuotaMB: 100
 
 # Create users.
 users:
-  - username: foouser
+  - username: testuser
     config:
-      password: foopassword
+      password: testpassword
       roles:
-        - ro_admin
-
-run_parts:
-  - directory: foo
-    user: foo
+        - bucket_full_access[*]
