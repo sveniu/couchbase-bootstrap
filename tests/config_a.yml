@@ -1,0 +1,50 @@
+---
+# Global log level (default: INFO)
+log_level: DEBUG
+
+# Host and port for the Couchbase REST API.
+api_host: 127.0.0.1
+api_port: 18091
+
+# REST API credentials.
+username: Administrator
+password: metamorphosis
+
+# Node configuration
+node_type: controller
+
+# Allow cluster join over unencrypted HTTP.
+insecure_join: true
+
+# Configure which services should run on this node.
+services:
+  - kv # Data Service
+  - n1ql # Query Service
+  - index # Index Service
+
+#
+# Cluster configuration
+#
+
+clusterName: testcluster
+
+# Set per-service memory quotas in megabytes or ratios of total memory.
+memory_quotas:
+  memoryQuota: 256
+
+# Create buckets.
+buckets:
+  - name: bla
+    ramQuotaMB: 100
+
+# Create users.
+users:
+  - username: foouser
+    config:
+      password: foopassword
+      roles:
+        - ro_admin
+
+run_parts:
+  - directory: foo
+    user: foo

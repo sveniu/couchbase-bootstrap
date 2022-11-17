@@ -17,20 +17,26 @@ class Configuration(dict):
     def __init__(self, *args, **kwargs):
         dict.__init__(self, *args, **kwargs)
 
-    def __getitem__(self, key):
-        return self.__dict__[key]
+
+#    def __getitem__(self, key):
+#        return self.__dict__[key]
 
 
-def get_config() -> Configuration:
+def get_config(path=None) -> Configuration:
     # If supplied, treat the first argument as the configuration file.
     if len(sys.argv) > 1:
         config_file_paths.insert(0, sys.argv[1])
+
+    # If supplied, treat the path argument as the configuration file.
+    if path is not None:
+        config_file_paths.insert(0, path)
 
     config = None
     for fn in config_file_paths:
         try:
             with open(os.path.expanduser(fn), "r") as f:
                 config = yaml.safe_load(f)
+                logger.debug("config loaded", extra={"path": fn})
                 break
         except FileNotFoundError as e:
             logger.debug("config file not found", extra={"path": fn, "exception": e})

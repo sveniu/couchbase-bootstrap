@@ -4,17 +4,18 @@ import traceback
 
 from .config import get_config
 from .log import CustomJsonFormatter
+from .node import bootstrap_node
 
 logger = logging.getLogger()
 
 
 def main():
-    config = get_config()
+    cfg = get_config()
 
     # Update log level from config.
-    logger.setLevel(config.get("log_level", logging.INFO))
+    logger.setLevel(cfg.get("log_level", logging.INFO))
 
-    logger.info("Hello, World!")
+    return bootstrap_node(cfg)
 
 
 def cli():
