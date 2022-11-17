@@ -19,6 +19,11 @@ def bootstrap_controller(node, cfg):
     # controller.
     node.set_authentication()
 
+    # Update index settings. Setting the storage mode is required before indexes
+    # can be created.
+    if "index_settings" in cfg:
+        node.update_index_settings(cfg["index_settings"])
+
     # Create buckets.
     for bucket_config in cfg.get("buckets", []):
         logger.info("creating bucket", extra={"config": bucket_config})

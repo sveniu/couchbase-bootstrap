@@ -32,6 +32,10 @@ clusterName: testcluster
 memory_quotas:
   memoryQuota: 256
 
+# Configure indexes.
+index_settings:
+  storageMode: plasma
+
 # Create buckets.
 buckets:
   - name: bla
