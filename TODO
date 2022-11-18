@@ -1,0 +1,46 @@
+# TODO
+
+## Index creation
+
+Index creation (with cbq) could depend on having enough index nodes available to
+satisfy the num_replica requirement of the index. If the member nodes have not
+yet been taken into the cluster with a rebalance, index creation with
+num_replica >= 1 will fail.
+
+The cbq program will exit with error code 0, even if the -exit-on-error option
+is used, and even if there's a single erroneous statement in the script file. So
+another means of error handling is necessary.
+
+Example:
+
+```text
+ubuntu@ip-10-250-162-116:~$ /opt/couchbase/bin/cbq -e couchbase://127.0.0.1/ -u testuser -p testpassword -f cbq_scripts/01-foo
+ Connected to : <http://127.0.0.1:8091/>. Type Ctrl-D or \QUIT to exit.
+
+ Path to history file for the shell : /home/ubuntu/.cbq_history
+CREATE INDEX emails_sharded_idx ON `mybucket`(lower(`email`)) PARTITION BY hash(lower("email")) WHERE (type = "user") WITH { "defer_build": true, "num_replica": 1 };
+{
+    "requestID": "2c694470-597a-4189-90b6-cd1a9dc258b2",
+    "signature": null,
+    "results": [
+    ],
+    "errors": [
+        {
+            "code": 5000,
+            "msg": "GSI CreateIndex() - cause: Fails to create index.  There are not enough indexer nodes to create index with replica count of 1. Some indexer nodes may be marked as excluded."
+        }
+    ],
+    "status": "errors",
+    "metrics": {
+        "elapsedTime": "7.460796ms",
+        "executionTime": "7.369777ms",
+        "resultCount": 0,
+        "resultSize": 0,
+        "errorCount": 1
+    }
+}
+ ERROR 174 : Unspecified error.
+```
+
+Note that the entire output is on stdout, including the "ERROR 174" part. This
+makes handling errors pretty challenging.
