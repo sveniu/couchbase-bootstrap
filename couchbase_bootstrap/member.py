@@ -1,6 +1,7 @@
 import logging
 
 import backoff
+import requests
 from couchbase_cluster_admin import cluster
 
 logger = logging.getLogger(__name__)
@@ -14,7 +15,10 @@ def lookup_join_timeout_seconds():
 
 @backoff.on_exception(
     backoff.expo,
-    cluster.AddToNotProvisionedNodeException,
+    (
+        cluster.AddToNotProvisionedNodeException,
+        requests.exceptions.ConnectionError,
+    ),
     max_time=lookup_join_timeout_seconds,
 )
 def join_cluster(node, config):
