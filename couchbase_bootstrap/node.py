@@ -12,8 +12,8 @@ def bootstrap_node(cfg):
     node = cluster.Cluster(
         cfg.get("clusterName", None),
         services=cfg["services"],
-        host=cfg["api_host"],
-        port=cfg["api_port"],
+        api_host=cfg["api_host"],
+        api_port=cfg["api_port"],
         username=cfg["username"],
         password=cfg["password"],
     )
