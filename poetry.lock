@@ -93,7 +93,7 @@ develop = false
 type = "git"
 url = "https://github.com/sveniu/couchbase-cluster-admin.git"
 reference = "HEAD"
-resolved_reference = "86dcb7db87f19212fe7401726a38ed9ba7d7eb48"
+resolved_reference = "69eb4171713546165473e4295ae252a7372517f2"
 
 [[package]]
 name = "exceptiongroup"

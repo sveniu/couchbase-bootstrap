@@ -16,8 +16,9 @@ def lookup_join_timeout_seconds():
 @backoff.on_exception(
     backoff.expo,
     (
-        cluster.AddToNotProvisionedNodeException,
         requests.exceptions.ConnectionError,
+        cluster.ConnectToControllerOnJoinException,
+        cluster.AddToNotProvisionedNodeException,
     ),
     max_time=lookup_join_timeout_seconds,
 )
