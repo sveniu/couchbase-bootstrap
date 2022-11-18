@@ -23,7 +23,9 @@ def bootstrap_node(cfg):
 
     node_type = cfg["node_type"]
     if node_type == "controller":
+        logger.debug("node type is controller")
         bootstrap_controller(node, cfg)
 
     elif node_type == "member":
+        logger.debug("node type is member")
         bootstrap_member(node, cfg)

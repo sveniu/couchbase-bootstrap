@@ -34,3 +34,5 @@ def bootstrap_member(node, cfg):
 
     # Join the cluster, with backoff.
     join_cluster(node, cfg)
+
+    logger.info("cluster join successful")

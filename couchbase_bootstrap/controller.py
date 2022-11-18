@@ -23,6 +23,7 @@ def bootstrap_controller(node, cfg):
     # Update index settings. Setting the storage mode is required before indexes
     # can be created.
     if "index_settings" in cfg:
+        logger.debug("updating index settings")
         node.update_index_settings(cfg["index_settings"])
 
     # Create buckets.
@@ -43,6 +44,7 @@ def bootstrap_controller(node, cfg):
                 continue
 
             # Execute the script.
+            logger.debug("executing cbq script", extra={"entry": entry})
             exec_cbq_script(
                 entry["engine"],
                 entry["username"],
