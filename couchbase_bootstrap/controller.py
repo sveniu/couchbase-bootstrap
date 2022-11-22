@@ -23,8 +23,9 @@ def bootstrap_controller(node, cfg):
     # Update index settings. Setting the storage mode is required before indexes
     # can be created.
     if "index_settings" in cfg:
-        logger.debug("updating index settings")
-        node.update_index_settings(cfg["index_settings"])
+        settings = cfg["index_settings"]
+        logger.debug("updating index settings", extra={"settings": settings})
+        node.update_index_settings(settings)
 
     # Create buckets.
     for bucket_config in cfg.get("buckets", []):
