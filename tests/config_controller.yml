@@ -36,6 +36,10 @@ memory_quotas:
 index_settings:
   storageMode: plasma
 
+# Configure autofailover.
+autoFailover_settings:
+  enabled: "false"
+
 # Create buckets.
 buckets:
   - name: mybucket

@@ -27,6 +27,11 @@ def bootstrap_controller(node, cfg):
         logger.debug("updating index settings", extra={"settings": settings})
         node.update_index_settings(settings)
 
+    if "autoFailover_settings" in cfg:
+        settings = cfg["autoFailover_settings"]
+        logger.debug("setting autoFailover config", extra={"settings": settings})
+        node.set_autofailover(settings)
+
     # Create buckets.
     for bucket_config in cfg.get("buckets", []):
         logger.info("creating bucket", extra={"config": bucket_config})
