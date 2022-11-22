@@ -13,7 +13,7 @@ def bootstrap_controller(node, cfg):
     # Set memory quotas per service.
     node.set_memory_quotas(
         cfg["memory_quotas"],
-        total_memory_mb=meminfo()["MemTotal"] / 1024**3,
+        total_memory_mb=meminfo()["MemTotal"] / 1024**2,
     )
 
     # Set authentication, and thus transition this node to become the cluster
